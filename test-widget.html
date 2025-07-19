@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Widget Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      .status {
+        background: #e8f5e8;
+        border: 1px solid #4caf50;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chatbot Widget Test</h1>
+      <div class="status">
+        <h3>Widget Status:</h3>
+        <p>
+          If you see a chat icon or widget in the bottom corner, the widget is
+          working!
+        </p>
+        <p>Check the browser console (F12) for any error messages.</p>
+      </div>
+
+      <h2>Instructions:</h2>
+      <ol>
+        <li>Open browser developer tools (F12)</li>
+        <li>Go to the Console tab</li>
+        <li>Look for any error messages</li>
+        <li>Check if the widget appears in the bottom corner</li>
+      </ol>
+
+      <h2>Expected Behavior:</h2>
+      <ul>
+        <li>A chat widget should appear in the bottom right corner</li>
+        <li>You should be able to click on it to open a chat interface</li>
+        <li>No JavaScript errors should appear in the console</li>
+      </ul>
+    </div>
+
+    <!-- Add this to your HTML page, preferably before the closing </body> tag -->
+    <script src="https://testmyprompt.com/widget/687ad0e4039a1de0dd790698/widget.js"></script>
+    <script>
+      // Initialize the widget after the script loads
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM Content Loaded - attempting to initialize widget");
+        if (window.AIChatWidget) {
+          console.log("AIChatWidget found, initializing...");
+          window.AIChatWidget.init({
+            widgetId: "687ad0e4039a1de0dd790698",
+          });
+          console.log("Widget initialization called");
+        } else {
+          console.log("AIChatWidget not found on DOMContentLoaded");
+          // Try again after a delay
+          setTimeout(function () {
+            if (window.AIChatWidget) {
+              console.log("AIChatWidget found on retry, initializing...");
+              window.AIChatWidget.init({
+                widgetId: "687ad0e4039a1de0dd790698",
+              });
+            } else {
+              console.error("AIChatWidget still not found after retry");
+            }
+          }, 2000);
+        }
+      });
+    </script>
+  </body>
+</html>
